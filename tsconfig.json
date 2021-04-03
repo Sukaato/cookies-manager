@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "skipLibCheck": true,
+    "removeComments": false,
+    "noLib": false,
+    "target": "ES2019",
+    "sourceMap": true,
+    "outDir": "dist",
+    "allowJs": false,
+    "strictNullChecks": false
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "test"]
+}

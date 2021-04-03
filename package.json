@@ -1,0 +1,25 @@
+{
+  "name": "cookies-manager",
+  "version": "1.0.0",
+  "description": "Manage your cookies simply",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sukaato/cookies-manager.git"
+  },
+  "keywords": [
+    "cookies",
+    "manager",
+    "typescript",
+    "front-end"
+  ],
+  "author": "Sukaato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sukaato/cookies-manager/issues"
+  },
+  "homepage": "https://github.com/Sukaato/cookies-manager#readme"
+}
