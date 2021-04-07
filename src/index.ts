@@ -7,7 +7,7 @@ import { Cookie, DocumentCookie } from './cookie.type';
 export class CookiesManager {
 
   private readonly prefix = '[Cookies Manager]:';
-  private readonly keyRegex = /[\w-]+/g;
+  private readonly keyRegex = /[^\w-]+/g;
   private readonly valueRegex = /[",;:\\]+/g;
   private readonly cookieMatcher = /([\w-]+)=([^",;:\\]+)/;
 
@@ -24,11 +24,17 @@ export class CookiesManager {
   }
 
   keys(): string[] {
+    const cookies = this.all();
+
+    if (cookies.length === 0) return [];
     return this.all().map(cookie => cookie.key);
   }
 
   all(): DocumentCookie[] {
-    return document.cookie.split(';').map(cookie => {
+    const cookies = document.cookie.split(';');
+
+    if (cookies[0] === '') return [];
+    return cookies.map(cookie => {
       const [, key, value ] = cookie.match(this.cookieMatcher);
       return {
         key, value
@@ -59,8 +65,9 @@ export class CookiesManager {
 
   clear(): void {
     const keys = this.keys();
+
     if (keys.length === 0) return;
-    keys.forEach(this.remove);
+    keys.forEach(async key => this.remove(key));
   }
 
   exist(key: string): boolean {
